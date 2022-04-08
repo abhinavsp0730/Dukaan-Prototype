@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+ 
+{% block title %}New Product{% endblock %}
+ 
+{% block breadcrumb %}
+<li class="breadcrumb-item active" style="color: #000; margin-top: 5px;">Your Products</li>
+<li class="breadcrumb-item"><a href="{% url 'new_product' %}" class="btn btn-info" role="button">Add New Product</a>
+</li>
+<li class="breadcrumb-item"><a href="{% url 'yord' %}" class="btn btn-info" role="button">Your Orders</a></li>
+<li class="breadcrumb-item"><a href="{% url 'ord' user.username %}" class="btn btn-info" role="button">Your Dukaan Link
+    for Buying Products</a></li>
+{% endblock %}
+{% block content %}
+<table class="table">
+  <thead class="thead-inverse">
+    <tr>
+      <th>Your Catalogue</th>
+      <th>Available</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for product in products %}
+    <tr>
+      <td>
+        {{ product.name }}
+ 
+        <small class="text-muted d-block"><b>MRP: </b>{{ product.mrp }}</small>
+        <small class="text-muted d-block"><b>Discounted Price: </b>{{ product.discounted_price }}</small>
+        <small class="text-muted d-block"><b>Description: </b>{{ product.details }}</small>
+      </td>
+      <td>
+        <div class="btn-group btn-toggle" style="margin-top: 20px;">
+          <div class="row d-flex">
+            {% if product.available %}
+            <a href="{% url 'available' product.id 'True' %}" class="btn btn-success active"> Yes </a>
+            <a href="{% url 'available' product.id 'False' %}" class="btn btn-default"> No </a>
+            {% else %}
+            <a href="{% url 'available' product.id 'True' %}" class="btn btn-default"> Yes </a>
+            <a href="{% url 'available' product.id 'False' %}" class="btn btn-success active"> No </a>
+            {% endif %}
+          </div>
+        </div>
+      </td>
+      <td>
+        <a href="{% url 'update' product.id %}" class="btn btn-warning" style="margin-top: 20px;"> Update </a>
+      </td>
+    </tr>
+    {% endfor %}
+ 
+  </tbody>
+</table>
+{% endblock %}

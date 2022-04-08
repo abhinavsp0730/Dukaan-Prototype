@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block title %}Create a new Product{% endblock %}
+
+{% block breadcrumb %}
+  <li class="breadcrumb-item active" style="color: #000; margin-top: 5px;">Add new Product</li>
+  <li class="breadcrumb-item"><a href="{% url 'yc' %}" class="btn btn-info" role="button">Your Products</a></li>
+  <li class="breadcrumb-item"><a href="{% url 'yord' %}" class="btn btn-info" role="button">Your Orders</a></li>
+  <li class="breadcrumb-item"><a href="{% url 'ord' user.username %}" class="btn btn-info" role="button">Your Dukaan Link for Buying Products</a></li>
+{% endblock %}
+
+{% block content %}
+  <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="btn btn-success">Post</button>
+  </form>
+{% endblock %}
+

@@ -1,0 +1,27 @@
+{% extends 'base_accounts.html' %}
+
+{% block title %}Sign up to Django Boards{% endblock %}
+
+{% block content %}
+  <div class="row justify-content-center">
+    <div class="col-lg-8 col-md-10 col-sm-12">
+      <div class="card">
+        <div class="card-body">
+          <h3 class="card-title">Sign up</h3>
+          <form method="post" id="signUpForm" novalidate>
+            {% csrf_token %}
+            {% include 'includes/form.html' %}
+            {% if recaptcha_enabled %}
+              <button class="g-recaptcha btn btn-primary btn-block" data-sitekey="{{ recaptcha_site_key }}" data-callback='onSubmit'>Create an account</button>
+            {% else %}
+              <button type="submit" class="btn btn-primary btn-block">Create an account</button>
+            {% endif %}
+          </form>
+        </div>
+        <div class="card-footer text-muted text-center">
+          Already have an account? <a href="{% url 'login' %}">Log in</a>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}
