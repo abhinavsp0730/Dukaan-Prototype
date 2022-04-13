@@ -64,7 +64,8 @@ I've implemented two cache Invalidation technique.
 1. Event based cahce invalidation.
 2. Time Based cache INvalidation.
 
-
+Let's see it action and monitor what is happening underhood using ```redis-cli monitor``` command. \
+When we fi
 
 
 
