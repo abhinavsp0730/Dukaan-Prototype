@@ -40,6 +40,30 @@ Unique Link To Buy Product From vendors (``` ```)
 Vendor's Your Orders Dashboard (``` ```)
 ![Screenshot_20220413_164202](https://user-images.githubusercontent.com/43638955/163244767-b4fc0925-1954-440e-9d4b-087ae108753f.png)
 
+## Optimization using caching mechanism 
+Suppose there's a sale for a vendor's dukaan shop. Then there's gonna be high traffic for our backend server. \
+For each request of client django is going to do costly query in the db. Because of this the throughput of the \
+server is gonna be decrease drastically. \ 
+Let's test throughput speed by bursting 100 requests in the vendor's unique link(I have already populated the db with dummy data) 
+\
+![ezgif com-gif-maker](https://user-images.githubusercontent.com/43638955/163250445-dbf53914-c072-4979-8e98-e52bf2344f74.gif) \
+For completing 100 requesting it's taking around ``` 3.38 sec ```. Pretty slow right? \
+\
+For copinng with this problem I've implemented caching mechanism(redis). Which create a view level cache for each vendors \
+```order``` view.
+\
+Now, let's again test throughput speed by bursting 100 requests in the vendor's unique link but this time having cache enabled .
+\
+![ezgif com-gif-maker(1)](https://user-images.githubusercontent.com/43638955/163252685-5f4f7f4f-770a-4468-ac4e-50b7a5c78bad.gif)
+
+Insane, this time it take only ```0.95 sec``` to process 100 requests. Which is roughly ```72%``` increase in throughput 🔥 🔥 🔥 \
+
+But what happened when the vendor added a new product or make the product unavailable? The customers are still geting the cached page. \
+For this problem we've to invalidate cache. Cache Invalidation is a crucial part in any caching mechanism. 
+I've implemented two cache Invalidation technique.
+1. Event based cahce invalidation.
+2. Time Based cache INvalidation.
+
 
 
 
