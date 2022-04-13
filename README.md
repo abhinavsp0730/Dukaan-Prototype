@@ -1,4 +1,4 @@
-# Dukaan Prototype- A Production Grade Dukaan MVP 
+# Dukaan Prototype - A Production Grade Dukaan MVP 
 ## **Django+PostgreSQL+Redis+Nginx+Gunicorn+Docker Compose 🔥 🔥 🔥**
 
 ## Quick Introduction:
@@ -12,3 +12,7 @@ And finally I've used Docker Compose for running multiple containers as a single
 ## Infrastructre Diagram of Dukaan Prototype:
 
 ![Screenshot_20220413_132548](https://user-images.githubusercontent.com/43638955/163128761-9b3b7830-f47a-41af-b9e0-bca5f602f1b9.png)
+
+## Web App walkthrough
+(Note: While creating the project my aim was to focus enterily in the Backend part and to implement state of the art Backend Infra. \
+So, I've created a very simple frontend by using just html and css. I'm able to do this by leveraging DTL and using my engineering jugadu mind)
