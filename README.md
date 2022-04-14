@@ -22,22 +22,22 @@ Then there is a unique link for each vendor which they can send to their custome
 by entering the neccesary details. Each placed orders then are displayed in the order's dashboard of vendor. \
 Below are the snapshot of the web app. \
 
-Signup Page (``` ```)
+Signup Page (``` http://127.0.0.1:8000 #eg url for showing route ```)
 ![Screenshot_20220413_163418](https://user-images.githubusercontent.com/43638955/163236389-9ca3a6fd-738d-49c5-a9a4-dd6afc2b1061.png)
 
-Login Page (``` ```)
+Login Page (``` http://127.0.0.1:8000/login/ #eg url for showing route```)
 ![Screenshot_20220413_163433](https://user-images.githubusercontent.com/43638955/163238161-c0d5ca4e-4c3b-4f0a-8495-1d510c69499b.png)
 
-Vendor's "Your Product Dashboard" (``` ```)
+Vendor's "Your Product Dashboard" (```http://127.0.0.1:8000/your_product/ #eg url for showing route```)
 ![Screenshot_20220413_163450](https://user-images.githubusercontent.com/43638955/163243533-a14b686f-344a-4b52-b197-f6451000ebec.png)
 
-Vendor's Add NeW Product Form  (``` ```)
+Vendor's Add NeW Product Form  (``` http://127.0.0.1:8000/new_product/ #eg url for showing route```)
 ![Screenshot_20220413_163732](https://user-images.githubusercontent.com/43638955/163243670-22fa5c72-704b-4101-8b3a-68f1299abde8.png) 
 
-Unique Link To Buy Product From vendors (``` ```) 
+Unique Link To Buy Product From vendors (```http://127.0.0.1:8000/order/demo #eg url for showing route```) 
 ![Screenshot_20220413_163830](https://user-images.githubusercontent.com/43638955/163243921-0fd9450b-41a3-4e38-8462-19d3afac5d0e.png)
 
-Vendor's Your Orders Dashboard (``` ```)
+Vendor's Your Orders Dashboard (```http://127.0.0.1:8000/your_order/ #eg url for showing route```)
 ![Screenshot_20220413_164202](https://user-images.githubusercontent.com/43638955/163244767-b4fc0925-1954-440e-9d4b-087ae108753f.png)
 
 ## Optimization using caching mechanism 
@@ -65,14 +65,14 @@ I've implemented two cache Invalidation technique.
 2. Time Based cache Invalidation.
 
 Let's see it in action and monitor what is happening underhood using ```redis-cli monitor``` command. \
-When the customer first visits the unique url ``` ``` then django will accept the request do some query in the ```Product``` model \
+When the customer first visits the unique url ```http://127.0.0.1:8000/order/demo #eg unique url``` then django will accept the request do some query in the ```Product``` model \
 and then first **cahced** the response and then send the response back to the customer.
 After that any subsequent request to the unique url will not hit the db rather than it'll get the requested page from the cache which is stored\
 in Redis memory.
 \
-1. When the customer first the unique url ``` ``` then this request hit the db do the query and generate the page. \
+1. When the customer first the unique url ``` http://127.0.0.1:8000/order/demo ``` then this request hit the db do the query and generate the page. \
 and this page is then stored in the Redis Memory. \
-You can see the ```$SET``` redis command is executed for storing the cache.
+You can see the ```$SETX``` redis command is executed for storing the cache.
 ![r1](https://user-images.githubusercontent.com/43638955/163332657-a2887bd3-5ff9-4a99-8c71-8a7fc4bc02e5.png)
 2. When we reload the page you can see that this time django is not hitting the db and doing  the costly query \ 
 but rather than it's getting the requested page from Redis Memory.
