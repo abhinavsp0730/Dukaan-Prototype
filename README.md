@@ -86,6 +86,62 @@ You can see the ```$GET``` redis command is executed for sending the requested p
  You can see the ```$DEL``` redis command is executed for Invalidating the cache.
 ![r3](https://user-images.githubusercontent.com/43638955/163333354-fec19299-23a6-4b82-880e-157abf2e4fd7.png)
 
+## How to run this Project 
+To run this project you need to install Docker and Docker Compose.\
+Checkout the documentation if you don't have \
+[How to install Docker](https://docs.docker.com/engine/install/)\
+[How to install Docker Compose](https://docs.docker.com/compose/install/)\
+After that do,\
+```mkdir dukaan-prototype```  
+```cd dukaan-prototype``` 
+
+Then clone this repo by running \
+``` git clone https://github.com/abhinavsp0730/Dukaan-Prototype ```
+
+
+Then simply run 
+``` 
+# running the docker compose script to buid & spin up docker compose service. 
+docker-compose -f docker-compose.prod.yml up -d --build 
+``` 
+
+![ezgif com-gif-maker(2)](https://user-images.githubusercontent.com/43638955/163382057-64318883-4081-4ad3-9fe1-7e0487a344db.gif) \
+Then run 
+```
+# for doing the django migration 
+docker-compose -f docker-compose.prod.yml exec web python manage.py migrate --noinput
+```
+
+``` 
+# copying the static files to right dir so that Nginx can serve them
+docker-compose -f docker-compose.prod.yml exec web python manage.py collectstatic --no-input --clear
+``` 
+
+
+Now visit, \
+``` http://localhost:1337/ ``` \
+Yay, your production grade dukaan-protoproject has succefully up and is running 🎉 🎉 🎉 \
+You can verify if it's working properly by runining and then looking the logs\
+```docker-compose -f docker-compose.prod.yml logs -f``` \
+You can spin down the docker compose service by runing \
+```docker-compose -f docker-compose.prod.yml down -v``` 
+
+While I was creating the project I didn't found the example of the exact tech stack in the internet. \
+Also, there are lots of other thing happening in this project which I didn't cover in the ```readme.md``` 
+\
+So, if you want a tutorial blog for this project then send me mail at ```abhinavsp0730@gmail.com``` \
+or say a hello in twitter to me ```@NeurlAP```  
+
+## Closing Note:
+I made this project for getting an internship at [Dukaan](https://mydukaan.io/) in the position of django backend intern. \
+I'll update it below wheter I'm selected or not \
+**Result**
+```
+?
+```
+
+
+
 
 
 
