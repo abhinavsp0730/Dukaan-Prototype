@@ -14,7 +14,7 @@ And finally I've used Docker Compose for running multiple containers as a single
 ![Screenshot_20220413_132548](https://user-images.githubusercontent.com/43638955/163128761-9b3b7830-f47a-41af-b9e0-bca5f602f1b9.png)
 ## Live Demo 
 I've deployed this project in AWS EC2 instance(ubuntu server, 1 gig ram) \
-Go to [http://ec2-13-233-115-87.ap-south-1.compute.amazonaws.com/](https://ec2-13-233-115-87.ap-south-1.compute.amazonaws.com/) and login via below credential(I've already populated the DB for the demo) 
+Go to [http://ec2-13-233-115-87.ap-south-1.compute.amazonaws.com/](http://ec2-13-233-115-87.ap-south-1.compute.amazonaws.com/) and login via below credential(I've already populated the DB for the demo) 
 ```
 username:
 demo
