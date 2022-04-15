@@ -69,7 +69,7 @@ Insane, this time it take only ```0.95 sec``` to process 100 requests. Which is 
 
 But what will happen when the vendor adds a new product or make the product unavailable? The customers will still get the cached page. \
 For this problem we've to invalidate cache. Cache Invalidation is a crucial part in any caching mechanism system. \
-I've implemented two cache Invalidation technique in this project.\
+I've implemented two cache Invalidation technique in this project.
 1. Event based cahce invalidation.
 2. Time Based cache Invalidation.
 
