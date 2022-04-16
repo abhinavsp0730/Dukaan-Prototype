@@ -19,6 +19,9 @@ from cacheops import cached_view
 
 @login_required
 def new_product(request):
+    """ 
+    save new products to Product model. 
+    """
     if request.method == 'POST':
         try:
             form = NewProductForm(request.POST)
@@ -43,6 +46,9 @@ def new_product(request):
 
 @login_required
 def yc(request):
+    """
+    returns filtered Product instance based on partiular user
+    """
     products = Product.objects.filter(User_id=request.user)
     return render(request, 'your_products.html', {'products': products}) 
 
@@ -50,6 +56,10 @@ def yc(request):
 @cached_view(timeout=60*15)
 @csrf_exempt
 def order(request, usr):
+    """
+    generates form for placing order and saving them in Order models
+    via user's unique link.
+    """
     model_user =  mu.objects.get(username=usr)
     choices = [(i.name, "Product Name: {} \n MRP: {} \n  Discounted Price: {} \n Description: {}".format(i.name, i.mrp, i.discounted_price, i.details)) for i in Product.objects.filter(User=model_user).filter(available=True)]
     if request.method == 'POST':
@@ -72,12 +82,18 @@ def order(request, usr):
 
 @login_required
 def yord(request):
+    """
+    display placed orders for particular user.
+    """
     products = Order.objects.filter(user=request.user)
     print(request.user)
     return render(request, 'yord.html', {'products': products}) 
 
 @login_required 
 def available(request, pk, avail):
+    """
+    changes "avaliable" boolen field of the instance of a Product model.
+    """
     pk = int(pk)
     avail = strtobool(avail)
     try:
@@ -97,7 +113,10 @@ def available(request, pk, avail):
 
 
 @login_required
-def update(request, id): 
+def update(request, id):
+    """
+    update the fields of a particular Product.
+    """
     instance = get_object_or_404(Product, id=id)
     form = UpdateForm(request.POST or None, instance=instance)
     if form.is_valid():
