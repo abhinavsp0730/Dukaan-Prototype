@@ -87,12 +87,12 @@ You can see the ```$SETX``` redis command is executed for storing the cache. �
 but rather than it's getting the requested page from Redis Memory.\
 You can see the ```$GET``` redis command is executed for sending the requested page. 👇 \
 ![r2](https://user-images.githubusercontent.com/43638955/163333322-f5d7f8eb-b583-4005-9eec-16799f319d7c.png)
-3. Whenever the vendor is doing any modification in the ```Product``` model we're inavalidating the stored cache. 👇 \
+3. Whenever the vendor is doing any modification in the ```Product``` model we're inavalidating the stored cache.  \
    i) Event Based Cache Invalidation: Whenever the vendor is adding "New Product" or making the available product \
     available/unvaliable by using toogle "Yes" or "No" buttons, we're Invalidating the cache.\
    ii) Time Based Cache Invalidation: All the stored cached will automatically gets invalidated after ```15 mins```. 
  When we're making one of the product unavailable the cache are getting Invalidated.
- You can see the ```$DEL``` redis command is executed for Invalidating the cache.
+ You can see the ```$DEL``` redis command is executed for Invalidating the cache. 👇
 ![r3](https://user-images.githubusercontent.com/43638955/163333354-fec19299-23a6-4b82-880e-157abf2e4fd7.png)
 
 ## How to run this Project 
@@ -100,12 +100,12 @@ To run this project you need to install Docker and Docker Compose.\
 Checkout the documentation if you don't have \
 [How to install Docker](https://docs.docker.com/engine/install/)\
 [How to install Docker Compose](https://docs.docker.com/compose/install/)\
-After that open terminal and do,\
-```$ mkdir dukaan-prototype```  
-```$ cd dukaan-prototype``` 
+After that open terminal and clone the repo 
 
-Then clone this repo by running \
-```$ git clone https://github.com/abhinavsp0730/Dukaan-Prototype ```
+```
+$ git clone https://github.com/abhinavsp0730/Dukaan-Prototype
+$ cd Dukaan-Prototype
+```
 
 Update the file permissions for making ```entrypoint.sh``` executable
 ```
