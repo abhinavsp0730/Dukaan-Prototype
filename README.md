@@ -27,7 +27,7 @@ So, I've created a very simple frontend by using just html and css. I'm able to 
 \
 The web app is having minimal functionality of [Dukaan](https://mydukaan.io/). i.e Vendors can add their products and manage them using a dashboard. \
 Then there is a unique link for each vendor which they can send to their customers. By using this unique link, customers can place the order \
-by entering the neccesary details. Each placed orders then are displayed in the order's dashboard of vendor. \
+by entering the neccesary details. Each placed order then are displayed in the order's dashboard of vendor. \
 Below are the snapshot of the web app. 
 
 Signup Page (``` http://127.0.0.1:8000 #eg url for showing route ```) 👇
@@ -51,7 +51,7 @@ Vendor's Your Orders Dashboard (```http://127.0.0.1:8000/your_order/ #eg url for
 ## Optimization using caching mechanism 
 Suppose there's a sale in a particular day  in a vendor's dukaan shop. In this day the website is going to face high amount of traffic and this is gonna cause heavy load in the backend. \
 When customers visits the vendor's unique link for buying products. \
-Then for each visit of the client django is going to do costly query in the db and then going to generate the desired page everytime. Because of this the throughput of the \
+Then for every visit, django is creating same response again and again. Because of this the throughput of the \
 server is gonna be decrease drastically.
 Let's test throughput speed by bursting 100 requests in the vendor's unique link(I have already populated the db with dummy data) 
 \
@@ -65,7 +65,7 @@ Now, let's again test throughput speed by bursting 100 requests in the vendor's 
 \
 ![ezgif com-gif-maker(1)](https://user-images.githubusercontent.com/43638955/163252685-5f4f7f4f-770a-4468-ac4e-50b7a5c78bad.gif)
 
-Insane, this time it take only ```0.95 sec``` to process 100 requests. Which is roughly ```72%``` increase in throughput 🔥 🔥 🔥 
+Insane, this time it took only ```0.95 sec``` to process 100 requests. Which is roughly ```72%``` increase in throughput 🔥 🔥 🔥 
 
 But what will happen when the vendor adds a new product or make the product unavailable? The customers will still get the cached page. \
 For this problem we've to invalidate cache. Cache Invalidation is a crucial part in any caching mechanism system. \
@@ -138,7 +138,7 @@ You can verify if it's working properly by runining and then looking the logs\
 You can spin down the docker compose service by runing \
 ```$ docker-compose -f docker-compose.prod.yml down -v``` 
 
-While I was creating the project I didn't found the example of the exact tech stack in the internet. \
+While I was creating the project I didn't find the example of the exact tech stack in the internet. \
 Also, there are lots of other thing happening in this project which I didn't cover in the ```readme.md```  intentionally.
 \
 So, if you want a tutorial blog for this project then send me mail at ```abhinavsp0730@gmail.com``` \
