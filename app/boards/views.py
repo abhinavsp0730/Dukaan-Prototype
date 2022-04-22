@@ -86,7 +86,6 @@ def yord(request):
     display placed orders for particular user.
     """
     products = Order.objects.filter(user=request.user)
-    print(request.user)
     return render(request, 'yord.html', {'products': products}) 
 
 @login_required 
