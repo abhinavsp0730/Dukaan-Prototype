@@ -49,7 +49,7 @@ def yc(request):
     """
     returns filtered Product instance based on partiular user
     """
-    products = Product.objects.filter(User_id=request.user)
+    products = Product.objects.filter(User=request.user)
     return render(request, 'your_products.html', {'products': products}) 
 
 
