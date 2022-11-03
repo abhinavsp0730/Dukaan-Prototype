@@ -147,11 +147,12 @@ or say a hello to me in twitter ```@NeurlAP```
 ## Closing Note:
 I made this project for getting an internship at [Dukaan](https://mydukaan.io/) in the position of django backend intern. \
 I'll update it below wheter I'm selected or not \
+
 **Result**
-```
+
 I got the internship and then got promoted to \
 full time Backend Engineer at Dukaan.
-```
+
 
 
 
